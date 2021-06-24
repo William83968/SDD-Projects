@@ -1,0 +1,14 @@
+IMAGE SOURCES
+
+All icon images from
+"https://www.flaticon.com/authors/flat-icons"
+
+MAKE POPUP METHOD derived from 
+https://stackoverflow.com/questions/20264403/how-to-make-a-popup-radial-menu-in-pygame
+
+BG_MUSIC1 from
+https://downloads.khinsider.com/game-soundtracks/album/dancing-line-ost/18%2520-%2520The%2520Sailor%2527s%2520Tale.mp3
+
+BG_MUSIC2 from
+https://www.youtube.com/watch?v=PlX9z-hU0To
+
