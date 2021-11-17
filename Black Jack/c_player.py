@@ -1,21 +1,67 @@
 from deck import Deck
-from game import Game
 
 class AI():
-    def __init__(self, cards):
+    def __init__(self):
         self.choice = 'stand'
-        self.chip_worth = 500
-        self.chip_num = 2
-        self.bet = self.chip_num * self.chip_worth
-        self.winning = False
-        self.l_times = 0
-        self.w_times = 0
+        self.status = 'neutral'
+        self.number = 0
+        self.cards = []
+        self.ranks = []
+        self.value = 0
     
-    def calc_sum(self, cards):
-        for i in cards:
-            if i in 'JQK':
-                cards[i] = 10
-                
+    def calc_hand(self, hand):
+        sum = 0
+        for i in range(len(hand)):
+            self.rank = list(hand[i])[-1]
+            if self.rank == '0':
+                self.ranks.append('10')
+            else:
+                self.ranks.append(self.rank)
+
+
+        non_aces = [card for card in self.ranks if card != 'A']
+        aces = [card for card in self.ranks if card == 'A']
+
+        for card in non_aces:
+            if card in 'JQK':
+                sum += 10
+            else:
+                sum += int(card)
+
+        for card in aces:
+            if sum <= 10:
+                sum += 11
+            else:
+                sum += 1
+
+        self.ranks = []
+        return sum
+
+
+    def make_choice(self):
+        self.value = self.calc_hand(self.cards)
+        if self.value > 17:
+            self.choice = 'Stand'
+        else:
+            self.choice = 'Hit'
+        return self.choice
+    
+    def check_win(self, dealer, first_hand):
+        if self.value == 21 and first_hand == True:
+            self.status = 'Blackjack'
+
+        if not first_hand:
+            if self.value < dealer:
+                self.status = 'Lose'
+            elif self.value > dealer:
+                self.status = 'Win'
+            else:
+                self.status = 'Draw'
+
+        return self.status
+
+    
+
 
     # def sort(self, arr):
     #     while True:
@@ -41,11 +87,7 @@ class AI():
     #         elif arr[mid] < target:
     #             right += 1
     #     return - 1
-
     
-
     
         
-    # def make_choice(self):
-            
 

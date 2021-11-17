@@ -2,8 +2,8 @@ import sys
 import pygame 
 from os import path
 from data import *
-from game import *
 from chip import *
+from game import *
 pygame.init()
 
 # BUTTON CLASS from TechWithTim
@@ -203,17 +203,12 @@ class Window():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.quit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if self.chip_50.isOver(mouse_pos):
-                    placing_bets(self, 50)
-                elif self.chip_100.isOver(mouse_pos):
-                    placing_bets(self, 100)
-                elif Hit_button.isOver(mouse_pos):
-                    g.standing = False
-                    deal_cards(self)
-                elif Stand_button.isOver(mouse_pos):
-                    g.standing = True
-                    deal_cards(self)
+            #     elif Hit_button.isOver(mouse_pos):
+            #         g.standing = False
+            #         deal_cards(self)
+            #     elif Stand_button.isOver(mouse_pos):
+            #         g.standing = True
+            #         deal_cards(self)
 
         self.draw()
         self.update()

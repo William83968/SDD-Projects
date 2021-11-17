@@ -2,6 +2,7 @@ import random
 
 class Player:
     def __init__(self):
+        self.money = 10000
         self.chip_worth = 50
         self.chip_num = 0
         self.max_chips = 10
@@ -37,6 +38,7 @@ class Player:
         self.bet = self.chip_num * self.chip_worth
         
     def lose(self):
+        self.status = ''
         self.bet -= self.chip_worth * 3
         self.l_times += 1
         
@@ -48,11 +50,13 @@ class Player:
             self.bet += won_amount * self.chip_worth
         self.w_times += 1
 
-    # def show_bet(self):
-    #     if self.bet > 0:
-    #         print('Your current bet: ${}'.format(self.bet))
-    #     else:
-    #         print('Your current bet: -${}'.format(self.bet*-1))
+    def show_bet(self):
+        if self.bet > 0:
+            print('Your current bet: ${}'.format(self.bet))
+        else:
+            print('Your current bet: -${}'.format(self.bet*-1))
+        self.money += self.bet
+        print('Your current money: ${}'.format(self.money))
 
     
     
